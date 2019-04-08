@@ -1,6 +1,6 @@
 {"ons":{
 "maptitle": "map about life expectancy",
-"varcolour": "PuBu",
+"varcolour":["#D2DFEA", "#A6BFD5" , "#79A0BF" , "#4D80AA" , "#206095"],
 "varunit": "change in months",
 "displaydecimals": 1,
 "legenddecimals": 0,

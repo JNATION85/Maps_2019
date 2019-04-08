@@ -1,5 +1,6 @@
 
 //test if browser supports webGL
+var padding = {top: 0, right: 0, bottom: 0, left: -30};
 
 if(Modernizr.webgl) {
 
@@ -370,11 +371,12 @@ if(Modernizr.webgl) {
 				.attr("x2", function(){if(!isNaN(rateById[code])) {return x(rateById[code])} else{return x(midpoint)}});
 
 
-			d3.select("#currVal")
+			d3.selectAll("#currVal, #rect, #path")
 				.text(function(){if(!isNaN(rateById[code]))  {return displayformat(rateById[code])} else {return "Data unavailable"}})
 				.style("opacity",1)
 				.transition()
 				.duration(400)
+
 				.attr("x", function(){if(!isNaN(rateById[code])) {return x(rateById[code])} else{return x(midpoint)}});
 
 		}
@@ -385,6 +387,9 @@ if(Modernizr.webgl) {
 
 			d3.select("#currVal").text("")
 				.style("opacity",0)
+
+				d3.selectAll("#rect, #path")
+					.style("opacity",0)
 		}
 
 		function createKey(config){
@@ -430,9 +435,10 @@ if(Modernizr.webgl) {
 				}))
 			  .enter().append("rect")
 				.attr("class", "blocks")
-				.attr("height", 8)
+				.attr("height", 20)
 				.attr("x", function(d) {
 					 return d.x0; })
+					 .attr("y", -10)
 				.attr("width", function(d) {return d.x1 - d.x0; })
 				.style("opacity",0.8)
 				.style("fill", function(d) { return d.z; });
@@ -440,20 +446,45 @@ if(Modernizr.webgl) {
 
 			g2.append("line")
 				.attr("id", "currLine")
-				.attr("x1", x(10))
-				.attr("x2", x(10))
-				.attr("y1", -10)
-				.attr("y2", 8)
-				.attr("stroke-width","2px")
-				.attr("stroke","#000")
+				.attr("x1", x(0))
+				.attr("x2", x(0))
+				.attr("y1", 0)
+				.attr("y2", 0)
+				.attr("stroke-width","0px")
+				.attr("stroke","#fff")
 				.attr("opacity",0);
 
-			g2.append("text")
-				.attr("id", "currVal")
-				.attr("x", x(10))
-				.attr("y", -15)
-				.attr("fill","#000")
-				.text("");
+
+
+
+				g2.append("rect")
+					.attr("id", "rect")
+					.attr("transform", "translate(" + padding.left + "," + padding.bottom + ")")
+    			.attr("x", 0)
+					.attr("y", -45)
+					.attr("width", 70)
+					.attr("height", 30)
+					.attr("ry", 5)
+					.style("fill", "#206095");
+
+					g2.append("path")
+							.attr("id", "path")
+							.attr('transform', 'rotate(180)')
+							.attr("x", 0)
+							.attr('d', d3.symbol()
+							.type(d3.symbolTriangle)
+							.size(100))
+							.style('fill', '#206095')
+							.style('stroke',"none");
+
+				g2.append("text")
+					.attr("id", "currVal")
+					.attr("x", x(10))
+					.attr("y", -25)
+					.attr("fill","#fff")
+					.text("");
+
+
 
 
 

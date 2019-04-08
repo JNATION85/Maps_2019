@@ -9,10 +9,12 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <title>Map title here</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
   <link href='css/mapbox-gl.css' rel='stylesheet'/>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <link rel="stylesheet" href="css/chosen.css">
+  <link rel="stylesheet" type="text/css" href="//cdn.ons.gov.uk/sixteens/810d626/css/main.css">
 
 <style>
     body {
@@ -40,21 +42,13 @@
 		}
 
 		#selectNav {
-			position:absolute;
-			top:0px;
-			left:0px;
-			width:30%;
-			height:40px;
+			width:100%;
 			background-color:rgba(255,255,255,0.8);
 			z-index:1;
 		}
 
 		#keydiv {
-			position:absolute;
-			top:40px;
-			left:0px;
-			width:30%;
-			height:80px;
+			width:100%;
 			background-color:rgba(255,255,255,0.8);
 			z-index:1;
 		}
@@ -118,14 +112,17 @@
   <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBCBVQS" height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </noscript>
+<div class="col col--md-40 col--lg-40 page-neutral-content__main-content margin-top--4 margin-left-md--1" style="position:relative;">
 
-<div id='map'>
-	<div id='keydiv'></div>
+  <div class="col-sm-6">
     <div id='selectNav'></div>
-
-
+  </div>
+  <div class="col-sm-6">
+    <div id='keydiv'></div>
+  </div>
+  <div id='map'>
+  </div>
 </div>
-
 <!--<script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>-->
 

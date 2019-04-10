@@ -25,12 +25,29 @@
 		margin: 0px auto;
 		display:block;
 	}
-
+.mapboxgl-canvas{
+  border: 1px solid #ccc;
+}
+.mapboxgl-ctrl-group{
+  border-radius: 0;
+background: #fff;
+}
+.mapboxgl-ctrl-top-right{
+  background-color: #fff;
+padding: 0px 0 0px 10px;
+margin: 1px 1px 0 0;
+}
 	#header{
 		height:70px;
 		width:100%
 	}
-
+  .map--title{
+    font-weight: bold;
+    color:#206095;
+  }
+.chosen-container-single .chosen-single div b{
+  display: none;
+}
 	.mapboxgl-ctrl-group .mapboxgl-ctrl-compass {
 		display: none;
 	}
@@ -46,11 +63,15 @@
 			background-color:rgba(255,255,255,0.8);
 			z-index:1;
 		}
-
+#selectNav label{
+  color:#206095;
+}
 		#keydiv {
 			width:100%;
 			background-color:rgba(255,255,255,0.8);
 			z-index:1;
+      margin-bottom: 15px;
+
 		}
 
 		#currVal {
@@ -64,34 +85,35 @@
 		 body {
 			height: 620px;
 		}
-
+.margin-top--4{
+  margin-top: 0!important;
+}
+.marg-top-mob{
+  margin-top:90px!important;
+}
 	    #map {
-			position:absolute;
-			top:0px;
-			margin-top:120px;
+
+			margin-top:20px;
 			height: 500px;
 			width: 100%;
 			overflow:visible;
 		}
 
 		#selectNav {
-			position:absolute;
-			top:-120px;
-			left:0px;
-			width:100%;
+						width:100%;
 			height:40px;
 			background-color:rgba(255,255,255,0.8);
 			z-index:3;
 		}
 
+
 		#keydiv {
-			position:absolute;
-			top:-80px;
-			left:0px;
+
 			width:100%;
 			height:80px;
 			background-color:rgba(255,255,255,0.8);
 			z-index:1;
+          margin-bottom: 15px;
 		}
 
 		#currVal {
@@ -113,12 +135,18 @@
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBCBVQS" height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </noscript>
 <div class="col col--md-40 col--lg-40 page-neutral-content__main-content margin-top--4 margin-left-md--1" style="position:relative;">
-
-  <div class="col-sm-6">
-    <div id='selectNav'></div>
+  <div class="col-sm-12">
+    <h2 class="map--title">Distribution of pay data</h2>
   </div>
-  <div class="col-sm-6">
-    <div id='keydiv'></div>
+  <div class="col-sm-12 margin-top--2" style="padding:0;">
+    <div class="col-sm-6">
+      <div id='selectNav'>
+      <label>Select an area</label>
+    </div>
+    </div>
+    <div class="col-sm-6 margin-top--4 marg-top-mob">
+      <div id='keydiv'></div>
+    </div>
   </div>
   <div id='map'>
   </div>

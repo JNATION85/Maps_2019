@@ -75,7 +75,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "rgb(220, 220, 220)",
+        "fill-color": "rgb(255, 255, 255)",
         "fill-antialias": true
       }
     },

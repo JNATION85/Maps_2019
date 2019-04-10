@@ -1,9 +1,9 @@
 {"ons":{
 "maptitle": "map about life expectancy",
-"varcolour":["#D2DFEA", "#A6BFD5" , "#79A0BF" , "#4D80AA" , "#206095"],
-"varunit": "change in months",
-"displaydecimals": 1,
-"legenddecimals": 0,
+"varcolour":["#d2dfe9", "#a7c0d4" , "#7aa0bf" , "#4f81a8" , "#206095"],
+"varunit": "",
+"displaydecimals": 3,
+"legenddecimals": 1,
 "breaks": "equal",
 "dropticks": false,
 "numberBreaks": 5

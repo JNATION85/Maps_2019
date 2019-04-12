@@ -10,6 +10,7 @@
   <title>Map title here</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
 
   <link href='css/mapbox-gl.css' rel='stylesheet'/>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -85,6 +86,31 @@ margin: 1px 1px 0 0;
 		 body {
 			height: 620px;
 		}
+
+    input[type=checkbox], input[type=radio] {
+    margin: 4px 0 0;
+    line-height: normal;
+}
+.input--checkbox {
+    background: url(https://sdc-global-design-patterns.netlify.com/assets/img/icons/icons--check.svg) no-repeat center center;
+    background-size: 0;
+    transition: background-size 50ms ease-out;
+    -webkit-appearance: none;
+}
+label{
+  margin-bottom: 0;
+}
+  .listing-group{
+    position: absolute;
+    z-index: 9;
+    left: 10px;
+    top: 5px;
+    background-color: #d2dfe9;
+color: #1f6095;
+    padding:5px;
+    display: flex!important;
+  align-items: center;
+  }
 .margin-top--4{
   margin-top: 0!important;
 }
@@ -134,11 +160,12 @@ margin: 1px 1px 0 0;
   <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBCBVQS" height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </noscript>
-<div class="col col--md-40 col--lg-40 page-neutral-content__main-content margin-top--4 margin-left-md--1" style="position:relative;">
+
+<div class="col col--md-40 col--lg-40 page-neutral-content__main-content margin-left-md--1" style="position:relative;">
   <div class="col-sm-12">
     <h2 class="map--title">Distribution of pay data</h2>
   </div>
-  <div class="col-sm-12 margin-top--2" style="padding:0;">
+  <div class="col-sm-12 margin-top--1" style="padding:0;">
     <div class="col-sm-6">
       <div id='selectNav'>
       <label>Select an area</label>
@@ -148,7 +175,11 @@ margin: 1px 1px 0 0;
       <div id='keydiv'></div>
     </div>
   </div>
-  <div id='map'>
+  <div id='map' style="position:relative;">
+    <nav id='listing-group' class='listing-group hidden-md visible-xs' style="position:absolute; z-index:9; left:10px; top:5px;">
+  <label for='dragRotate' for="dragPan">Enable touch scroll</label>
+  <input type='checkbox' class="" style="height: 17px; width: 17px;margin-top: 0;margin-left: 5px;" id='dragPan' value="dragPan" checked='checked'>
+</nav>
   </div>
 </div>
 <!--<script src="http://d3js.org/d3.v3.min.js"></script>
@@ -170,7 +201,16 @@ margin: 1px 1px 0 0;
 <script src='js/mapbox-gl.js'></script>
 <script src='js/turf.min.js'></script>
 <script src="js/script.js"></script>
-
+<script>
+document.getElementById('listing-group').addEventListener('change', function(e) {
+var handler = e.target.id;
+if (e.target.checked) {
+map[handler].enable();
+} else {
+map[handler].disable();
+}
+});
+</script>
 <noscript>
 	<p>Your browser does not support JavaScript. If you're able to please enable Javascript to view the map.</p>
 </noscript>

@@ -42,6 +42,8 @@ if(Modernizr.webgl) {
 		displayformat = d3.format("." + dvc.displaydecimals + "f");
 		legendformat = d3.format("." + dvc.legenddecimals + "f");
 
+
+
 		//set up basemap
 		map = new mapboxgl.Map({
 		  container: 'map', // container id
@@ -187,7 +189,7 @@ if(Modernizr.webgl) {
 				"layout": {},
 				"paint": {
 					"line-color": "orange",
-					"line-width": 2
+					"line-width": 3
 				},
 				"filter": ["==", "AREACD", ""]
 			});
@@ -396,9 +398,9 @@ if(Modernizr.webgl) {
 			.attr("transform", function(){if(!isNaN(rateById[code])) {return "translate(" + x(rateById[code]) +",0)"} else{return "translate(" + x(midpoint) +",0)"}})
 			.style("opacity", function(){if(!isNaN(rateById[code])) {return "1"} else{return "0"} });
 
-
-
-		}
+			d3.select("#avtext")
+			.style("opacity", function(){if(!isNaN(rateById[code])) {return "1"} else{return "1"}});
+					}
 
 		function hideaxisVal() {
 			d3.select("#currLine")
@@ -505,8 +507,8 @@ if(Modernizr.webgl) {
 
 
 				g2.append("text")
-					.attr("id", "currVal")
-					.attr("x", x(10))
+				.attr("id", "currVal")
+				.attr("x", x(10))
 					.attr("y", -48)
 					.attr("fill","#fff")
 					.style('font-weight', '700')
@@ -515,6 +517,29 @@ if(Modernizr.webgl) {
 
 
 
+
+					g2.append("text")
+					.attr("id", "avtext")
+					.attr("class", "keybar")
+					.attr('transform', 'translate(57 48)')
+					.text("UK Average - 16.1")
+					.style("font-weight", "bold")
+					.style("font-size", "14px")
+					.attr("fill","black");
+
+					//g2.append("text")
+					//.attr("id", "avtext")
+					//.attr("class", "keybar")
+					//.attr('transform', 'translate(100 48)')
+					//.text("16.1")
+					//.style("font-size", "14px")
+					//.attr("fill","#444");
+
+					//g2.append("rect")
+					//.attr("width", 125)
+					//.attr("height", 25)
+					//.attr('transform', 'translate(-9 32)')
+					//.style("stroke","orange");
 
 
 			keyhor.selectAll("rect")
@@ -538,18 +563,16 @@ if(Modernizr.webgl) {
 
 
 
-			keyhor.append("g")
-			.attr("class", "keybar")
-			.append("path")
-			.attr('transform', 'translate(150 -30), rotate(180)')
+			keyhor.append("rect")
+			.attr("id", "keybar")
+			.attr('transform', 'translate(150 -40)')
 			.attr("x", 0)
 			.attr("y", 12)
-			.attr('d', d3.symbol()
-			.type(d3.symbolTriangle)
-			.size(40))
-			.style('fill', 'orange')
+			.attr("width", 2)
+			.attr("height", 30)
+			.style('fill', 'black')
 			.style('stroke',"none")
-			.style("opacity",0);
+			.style("opacity",1);
 
 
 			if(dvc.dropticks) {
